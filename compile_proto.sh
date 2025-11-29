@@ -1,20 +1,20 @@
-# compile_proto.sh (修正后的版本)
+# compile_proto.sh (最终修正版本)
 # ----------------------------------------------------
 
-# 1. 确保协议仓库已存在（您需要手动克隆或使用git submodule）
-# 修正路径：现在协议仓库位于当前目录下的 BacktestSystem-Protocol 文件夹
+# 1. 定义路径变量
+# PROTO_DIR 指向包含所有 .proto 文件的目录
 PROTO_DIR="./BacktestSystem-Protocol" 
 OUTPUT_DIR="./core/interfaces"
 
 mkdir -p ${OUTPUT_DIR}
 
+echo "Starting Protobuf compilation..."
+
 # 2. 运行 Protobuf 编译器
-# --proto_path: 指明 .proto 文件在哪里
-# --python_out: 生成 Python 消息类
-# --grpc_python_out: 生成 gRPC 客户端/服务端 stub
-protoc -I=${PROTO_DIR}/proto \
+# 移除所有对 /proto 的引用！
+protoc -I=${PROTO_DIR} \
     --python_out=${OUTPUT_DIR} \
     --grpc_python_out=${OUTPUT_DIR} \
-    ${PROTO_DIR}/proto/*.proto
+    ${PROTO_DIR}/*.proto  # 直接引用 ${PROTO_DIR} 下的所有 .proto 文件
 
-echo "Protobuf files compiled successfully into ${OUTPUT_DIR}"
+echo "Protobuf compilation successful! Files are in ${OUTPUT_DIR}"
