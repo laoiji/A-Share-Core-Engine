@@ -1,0 +1,3 @@
+[submodule "BacktestSystem-Protocol"]
+	path = BacktestSystem-Protocol
+	url = https://github.com/laoiji/BacktestSystem-Protocol.git
