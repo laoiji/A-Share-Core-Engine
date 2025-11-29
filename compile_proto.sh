@@ -1,11 +1,9 @@
-#从 BacktestSystem-Protocol 仓库克隆或同步最新的 .proto 文件。
-#运行 Protobuf 编译器，根据目标语言（假设为 Python）生成相应的 .py 文件。
-
-# 示例：compile_proto.sh
-# 假设您已安装 protoc 和 grpcio-tools
+# compile_proto.sh (修正后的版本)
+# ----------------------------------------------------
 
 # 1. 确保协议仓库已存在（您需要手动克隆或使用git submodule）
-PROTO_DIR="../BacktestSystem-Protocol" 
+# 修正路径：现在协议仓库位于当前目录下的 BacktestSystem-Protocol 文件夹
+PROTO_DIR="./BacktestSystem-Protocol" 
 OUTPUT_DIR="./core/interfaces"
 
 mkdir -p ${OUTPUT_DIR}
